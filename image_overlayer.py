@@ -102,19 +102,19 @@ for pair in pairings:
                 img2r = img2.resize((1500,2000))
             print((aspectratio/img2.height))
 
-        img1a = img1r
-        img2a = img2r
-        img1a.putalpha(64)
-        img2a.putalpha(64)
+        img1a = img1r.copy()
+        img2a = img2r.copy()
+        img1a.putalpha(128)
+        img2a.putalpha(128)
 
         bga = Image.new('RGBA', (2000, 2000), (255, 255, 255, 255))
         bga.paste(img1a, ((int(round((bga.width/2 - img1a.width/2)))),(int(round((bga.height/2 - img1a.height/2))))))
-        bg2a = Image.new('RGBA', (2000, 2000), (255, 255, 2555, 255))
+        bg2a = Image.new('RGBA', (2000, 2000), (255, 255, 255, 255))
         bg2a.paste(img2a, ((int(round((bg2a.width/2 - img2a.width/2)))),(int(round((bg2a.height/2 - img2a.height/2))))))
 
         bg = Image.new('RGBA', (2000, 2000), (255, 255, 255, 255))
         bg.paste(img1r, ((int(round((bg.width/2 - img1r.width/2)))),(int(round((bg.height/2 - img1r.height/2))))))
-        bg2 = Image.new('RGBA', (2000, 2000), (255, 255, 2555, 255))
+        bg2 = Image.new('RGBA', (2000, 2000), (255, 255, 255, 255))
         bg2.paste(img2r, ((int(round((bg2.width/2 - img2r.width/2)))),(int(round((bg2.height/2 - img2r.height/2))))))
 
         alpha = Image.alpha_composite(bga, bg2a)
