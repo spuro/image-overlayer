@@ -84,22 +84,26 @@ for pair in pairings:
                         img2 = img2.rotate(90, expand=True)
         except (AttributeError, KeyError, IndexError):
                 pass
-
-        if img1.width > img1.height:
-            img1r = img1.resize((2000, 1500))
+        if img1.width == img1.height:
+            img1r = img1.resize((2000,2000))
         else:
-            img1r = img1.resize((1500,2000))
-        print((aspectratio/img1.height))
+            if img1.width > img1.height:
+                img1r = img1.resize((2000, 1500))
+            else:
+                img1r = img1.resize((1500,2000))
+            print((aspectratio/img1.height))
 
-        if img2.width > img2.height:
-            img2r = img2.resize((2000, 1500))
+        if img2.width == img2.height:
+            img2r = img2.resize((2000,2000))
         else:
-            img2r = img2.resize((1500,2000))
-        print((aspectratio/img2.height))
+            if img2.width > img2.height:
+                img2r = img2.resize((2000, 1500))
+            else:
+                img2r = img2.resize((1500,2000))
+            print((aspectratio/img2.height))
 
-        img1a = img1
-        img2a = img2
-
+        img1a = img1r
+        img2a = img2r
         img1a.putalpha(64)
         img2a.putalpha(64)
 
